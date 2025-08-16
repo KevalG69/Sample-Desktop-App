@@ -33,6 +33,37 @@ def button_click():
     
     #get which button is clicked
     button = app.sender()
+    
+    #get text written in the button 
+    textInButton = button.text()
+
+    if textInButton == "=":
+        #if = is clicked then get symbol in the text box
+        textInTextBox = text_box.text()
+
+        #try catch to handle error
+        try:
+            #evalute expression with whatever symbol it have
+            res = eval(textInTextBox)
+            text_box.setText(str(res))
+
+        #handle error
+        except Exception as error:
+            print("Error",error)
+
+    elif textInButton == "C":
+        #clear text box
+        text_box.clear()
+
+    elif textInButton == "<":
+        #get text from text box
+        textInTextBox = text_box.text()
+        #remove last text
+        text_box.setText(textInTextBox[:-1])
+
+    else:
+        textInTextBox = text_box.text()
+        text_box.setText(textInTextBox+textInButton)
 
 #All Design Here
 
